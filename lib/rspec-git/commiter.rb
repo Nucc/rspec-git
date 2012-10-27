@@ -2,10 +2,12 @@ module RspecGit
     class Commiter
         def initialize
             @repository = Grit::Repo.new(".")
+            self
         end
 
         def create
-            @repository.commit_all(message)
+            add
+            commit
         end
 
     private
@@ -22,15 +24,24 @@ module RspecGit
                     end
                 end
             end
+            if commit_message == ""
+                puts "There is no new specification. Didn't make commit..."
+            else
+                puts commit_message
+            end
             commit_message
         end
 
         def diff_chunks
-            @repository.diff("", "HEAD", History.file_path)
+            @repository.diff("", "HEAD", History.file_name)
         end
 
         def add
             @repository.add(".")
+        end
+
+        def commit
+            @repository.commit_all(message)
         end
     end
 end

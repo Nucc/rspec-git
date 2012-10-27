@@ -2,7 +2,11 @@ module RspecGit
     class History
 
         def self.file_path
-            "#{prefix}.last_tdd_run"
+            "#{prefix}#{file_name}"
+        end
+
+        def self.file_name
+            ".last_tdd_run"
         end
 
         def open
