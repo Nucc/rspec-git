@@ -11,7 +11,7 @@ Creates a git commit after each TDD step. Uses the new specification name to bui
 Extend the spec file with the requirement:
 
     describe "User" do
-      it "should contain name" do
+      it "should have name" do
         User.new.should respond_to(:name)
       end
     end
@@ -22,11 +22,11 @@ After implementing the feature and all of your specs are green, just call the <c
 
 It added the new changes to stage and created a git commit with the following message:
 
-    Added user should contain name
+    Added user should have name
 
 If you remove the spec, the generated message will be the following:
 
-    Removed user should contain name
+    Removed user should have name
 
 Let me know if you have any issue!
 
